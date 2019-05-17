@@ -11,7 +11,7 @@ system-supplied rand(). System-supplied rand()s are almost always
 linear congruential generators that will eventually repeat itself,
 with a period.
 
-That's why we need a better pseudo-random numbers generator: the white noise generator will use better way to generate a random number randqd.c: the "Quick and Dirty" Generators, described in  "Numerical Recipes in C" Second Edition at page 284, relies on 32-bit arithmetic. 
+That's why we need a better pseudo-random numbers generator. The white noise generator will use `randqd.c` a better way to generate a random number. It will use the "Quick and Dirty" Generators, described in "Numerical Recipes in C" Second Edition at page 284, relies on 32-bit arithmetic. 
 
 Currently under development at repo: [randqd](https://github.com/alessandrocuda/randqd)
 
