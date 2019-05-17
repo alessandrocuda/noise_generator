@@ -13,7 +13,7 @@ with a period.
 
 That's why we need a better pseudo-random numbers generator. The white noise generator will use `randqd.c` a better way to generate a random number. It will use the "Quick and Dirty" Generators, described in "Numerical Recipes in C" Second Edition at page 284, relies on 32-bit arithmetic. 
 
-Currently under development at repo: [randqd](https://github.com/alessandrocuda/randqd)
+`randqd.c` is currently under development at repo: [randqd](https://github.com/alessandrocuda/randqd)
 
 
 
