@@ -25,14 +25,46 @@ INCLUDES =
 LFLAGS = 
 LDFLAGS = -lm -lcmocka
 
+# define the C source files
+SOURCEDIR := ./wnoise
+
+#Detect system
+OSFLAG 				:=
+ifeq ($(OS),Windows_NT)
+	OSFLAG += -D WIN32
+	ifeq ($(PROCESSOR_ARCHITECTURE),AMD64)
+		OSFLAG += -D AMD64
+	endif
+	ifeq ($(PROCESSOR_ARCHITECTURE),x86)
+		OSFLAG += -D IA32
+	endif
+else
+	UNAME_S := $(shell uname -s)
+	ifeq ($(UNAME_S),Linux)
+		OSFLAG += -lrt -lm -lasound -ljack
+	endif
+	ifeq ($(UNAME_S),Darwin)
+		OSFLAG += -framework CoreServices -framework CoreFoundation -framework AudioUnit -framework AudioToolbox -framework CoreAudio
+	endif
+		UNAME_P := $(shell uname -p)
+	ifeq ($(UNAME_P),x86_64)
+		#OSFLAG += -D AMD64
+	endif
+		ifneq ($(filter %86,$(UNAME_P)),)
+	#OSFLAG += -D IA32
+		endif
+	ifneq ($(filter arm%,$(UNAME_P)),)
+		#OSFLAG += -D ARM
+	endif
+endif
+
 # define any libraries to link into executable:
 #   if I want to link in libraries (libx.so or libx.a) I use the -llibname 
 #   option, something like (this will link in libmylib.so and libm.so:
-LIBS = -lpthread include/libportaudio.a -framework CoreServices -framework CoreFoundation -framework AudioUnit -framework AudioToolbox -framework CoreAudio 
+LIBS = -lpthread $(SOURCEDIR)/include/libportaudio.a  
 
 
-# define the C source files
-SOURCEDIR := .
+
 #COM_SOURCES := $(shell find $(SOURCEDIR) -name '*.c')
 COM_SOURCES	:= $(SOURCEDIR)/randq/randq.c 
 WNOISE_SRC	:= $(SOURCEDIR)/white_noise.c  $(SOURCEDIR)/controller.c
@@ -66,7 +98,7 @@ all:    $(WNOISE) $(WNOISEUTEST)
 		@echo Messange Server and Client are been compiled
 
 $(WNOISE): $(COM_OBJS) $(WNOISE_OBJS)
-	$(CC) $(CFLAGS) $(INCLUDES) -o $(WNOISE) $(COM_OBJS) $(WNOISE_OBJS)  $(LIBS)
+	$(CC) $(CFLAGS) $(INCLUDES) -o $(WNOISE) $(COM_OBJS) $(WNOISE_OBJS)  $(LIBS) $(OSFLAG)
 $(WNOISEUTEST): $(COM_OBJS) $(WNOISEUTEST_OBJS)
 	$(CC) $(CFLAGS) $(INCLUDES) -o $(WNOISEUTEST) $(COM_OBJS) $(WNOISEUTEST_OBJS) $(LFLAGS) $(LIBS) $(LDFLAGS)
 
