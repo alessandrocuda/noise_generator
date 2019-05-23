@@ -17,9 +17,7 @@ int
 main(int argc, char const *argv[]){
 	printf("Start white noise main process:\n");
 	/* INIT */
-	struct sigaction new_action;
-	new_action.sa_handler = killHandler;
- 	sigaction(SIGINT, &new_action, NULL);
+ 	signal(SIGINT, killHandler);
 
 	PaStream *stream = NULL;
 	PaStreamParameters outputParameters;
