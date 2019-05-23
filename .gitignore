@@ -35,6 +35,8 @@
 *.i*86
 *.x86_64
 *.hex
+white_noise
+white_noise_utest
 
 # Debug files
 *.dSYM/
