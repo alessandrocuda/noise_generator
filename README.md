@@ -19,6 +19,8 @@ That's why we need a better pseudo-random numbers generator. The white noise gen
 
 ## System requirements
 ### Linux Ubuntu/Debian
+[//]: # (sudo apt-get install libjack-dev)
+
 ```bash
 # Requirements for white_noise_utest
 sudo apt-get install libcmocka-dev 

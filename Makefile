@@ -95,7 +95,7 @@ WNOISEUTEST = white_noise_utest
 .PHONY: depend clean clean_all
 
 all:    $(WNOISE) $(WNOISEUTEST)
-		@echo Messange Server and Client are been compiled
+		@echo white_noise and white_noise_utest are been compiled
 
 $(WNOISE): $(COM_OBJS) $(WNOISE_OBJS)
 	$(CC) $(CFLAGS) $(INCLUDES) -o $(WNOISE) $(COM_OBJS) $(WNOISE_OBJS) $(OSFLAG) $(LIBS)

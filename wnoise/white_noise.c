@@ -1,9 +1,15 @@
 //compile gcc -o white_noise white_noise.c include/libportaudio.a -framework CoreServices -framework CoreFoundation -framework AudioUnit -framework AudioToolbox -framework CoreAudio -lpthread
+/**
+ * Copyright (c) 2019 Alessandro Cudazzo
+ *
+ * white_noise is free software; you can redistribute it and/or modify it
+ * under the terms of the MIT license. See `LICENCE` file for details.
+ */
 #include <signal.h>
 
 #include "controller.h"
 
-#define VERSION 0.8.0
+#define VERSION 0.9.0
 #define KEEP_RUNNING 1
 
 void 
