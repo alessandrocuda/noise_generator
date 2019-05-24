@@ -13,10 +13,39 @@ with a period.
 That's why we need a better pseudo-random numbers generator. The white noise generator will use `randq.c` a better way to generate a random number. We will use the "Quick and Dirty" Generators, described in "Numerical Recipes in C" Second Edition at page 284, relies on 32-bit arithmetic and developed in `randq.c` through the following functions: `srandqd`, `randqd_uint32` and `randq_double`;
 
 
+## Stack
+- [randq.c](https://github.com/alessandrocuda/randq): a better pseudo-random numbers generator
+- [Portaudio](http://www.portaudio.com/): audio I/O library
+
+## System requirements
+### Linux Ubuntu/Debian
+```bash
+sudo apt-get install libasound-dev
+sudo apt-get install libjack
+
+# Download portaudo lib
+git clone https://git.assembla.com/portaudio.git
+./configure && make
+sudo make install
+```
+### MacOS with Homebrew
+```bash
+brew install portaudio
+```
 
 ## BUILD
+```bash
+git clone https://github.com/alessandrocuda/white_noise
+cd white_noise
+make
+```
+### Run
+```bash
+./white_noise           #run white_noise player
+./white_noise_utest     #run unit test for white_noise
+```
 
-TBW
+
 
 ## Support
 
