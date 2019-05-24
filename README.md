@@ -20,16 +20,21 @@ That's why we need a better pseudo-random numbers generator. The white noise gen
 ## System requirements
 ### Linux Ubuntu/Debian
 ```bash
-sudo apt-get install libasound-dev
-sudo apt-get install libjack
+# Requirements for white_noise_utest
+sudo apt-get install libcmocka-dev 
 
-# Download portaudo lib
+# Requirements for portaudio
+sudo apt-get install libasound-dev
+
+# Downlod and install portaudo lib
 git clone https://git.assembla.com/portaudio.git
+cd portaudio
 ./configure && make
 sudo make install
 ```
 ### MacOS with Homebrew
 ```bash
+brew install cmocka
 brew install portaudio
 ```
 
