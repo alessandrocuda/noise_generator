@@ -41,10 +41,10 @@ ifeq ($(OS),Windows_NT)
 else
 	UNAME_S := $(shell uname -s)
 	ifeq ($(UNAME_S),Linux)
-		OSFLAG += -lrt -lm -lasound -ljack
+		OSFLAG += /usr/local/lib/libportaudio.a -lrt -lm -lasound -ljack
 	endif
 	ifeq ($(UNAME_S),Darwin)
-		OSFLAG += -framework CoreServices -framework CoreFoundation -framework AudioUnit -framework AudioToolbox -framework CoreAudio
+		OSFLAG += /usr/local/opt/portaudio/lib/libportaudio.a  -framework CoreServices -framework CoreFoundation -framework AudioUnit -framework AudioToolbox -framework CoreAudio
 	endif
 		UNAME_P := $(shell uname -p)
 	ifeq ($(UNAME_P),x86_64)
@@ -61,7 +61,7 @@ endif
 # define any libraries to link into executable:
 #   if I want to link in libraries (libx.so or libx.a) I use the -llibname 
 #   option, something like (this will link in libmylib.so and libm.so:
-LIBS = -lpthread $(SOURCEDIR)/include/libportaudio.a  
+LIBS = -lpthread  
 
 
 
