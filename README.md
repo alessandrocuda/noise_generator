@@ -1,5 +1,5 @@
 # white_noise
-White noise generation developed in C.
+White noise generator developed in C.
 
 Whitenoise by definition contains all frequencies at a constant amplitude. 
 To generate a white noise it is necessary to be able to generate a sequence a pseudo-random numbers in the range from [-1.0 .. 1.0) which are effectively distributed according to the standard uniform distribution.
