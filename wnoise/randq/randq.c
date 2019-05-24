@@ -93,8 +93,9 @@ void srandq64(uint64_t start_seed)
  */
 uint64_t randq64_uint64()
 {    
-    if (!is_seed_init)
+    if (!is_seed_init){
         srandq64(default_rq64_seed);
+    }
     
 	u = u * 2862933555777941757LL + 7046029254386353087LL;
 	v ^= v >> 17; 
