@@ -1,5 +1,5 @@
 #include "noise_controller.h"
-#include "noise_model.h"
+#include "../noise_model/noise_model.h"
 
 #define SAMPLE_RATE 44100
 #define TABLE_SIZE SAMPLE_RATE

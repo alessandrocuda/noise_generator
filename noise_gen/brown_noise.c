@@ -7,7 +7,7 @@
  */
 #include <signal.h>
 
-#include "noise_controller.h"
+#include "noise_controller/noise_controller.h"
 
 #define VERSION 0.9.0
 #define KEEP_RUNNING 1
@@ -30,7 +30,7 @@ main(int argc, char const *argv[]){
 	PaStream *stream = NULL;
 	PaStreamParameters outputParameters;
 
-	init_noise_controller(&outputParameters,WHITE_NOISE_TYPE);
+	init_noise_controller(&outputParameters,BROWN_NOISE_TYPE);
 	printf("Hit ENTER to start/pause the whitenoise.\n");
 	printf("Hit ctrl+c to stop the program.\n");
 

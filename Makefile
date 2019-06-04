@@ -27,7 +27,7 @@ LFLAGS =
 LDFLAGS = -lm -lcmocka
 
 # define the C source files
-SOURCEDIR := ./wnoise
+SOURCEDIR := ./noise_gen
 
 #Detect system
 OSFLAG 				:=
@@ -68,8 +68,8 @@ LIBS = -lpthread
 
 #COM_SOURCES := $(shell find $(SOURCEDIR) -name '*.c')
 COM_SOURCES	:= $(SOURCEDIR)/randq/randq.c 
-WNOISE_SRC	:= $(SOURCEDIR)/white_noise.c  $(SOURCEDIR)/noise_controller.c $(SOURCEDIR)/noise_model.c
-BNOISE_SRC	:= $(SOURCEDIR)/brown_noise.c  $(SOURCEDIR)/noise_controller.c $(SOURCEDIR)/noise_model.c
+WNOISE_SRC	:= $(SOURCEDIR)/white_noise.c  $(SOURCEDIR)/noise_controller/noise_controller.c $(SOURCEDIR)/noise_model/noise_model.c
+BNOISE_SRC	:= $(SOURCEDIR)/brown_noise.c  $(SOURCEDIR)/noise_controller/noise_controller.c $(SOURCEDIR)/noise_model/noise_model.c
 WNOISEUTEST_SRC	:= $(SOURCEDIR)/white_noise_utest.c
 # define the C object files 
 #

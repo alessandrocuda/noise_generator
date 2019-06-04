@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h> /* for sleep() */
-#include "include/portaudio.h"
+#include "../include/portaudio.h"
 #include <math.h>
 
-#include "randq/randq.h"
+#include "../randq/randq.h"
 
 #define WHITE_NOISE_TYPE 1
 #define BROWN_NOISE_TYPE 2
