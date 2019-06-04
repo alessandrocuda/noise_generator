@@ -37,6 +37,8 @@
 *.hex
 white_noise
 white_noise_utest
+brown_noise
+noise_player
 
 # Debug files
 *.dSYM/

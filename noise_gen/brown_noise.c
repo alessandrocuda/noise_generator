@@ -7,10 +7,12 @@
  */
 #include <signal.h>
 
-#include "controller.h"
+#include "noise_controller/noise_controller.h"
 
 #define VERSION 0.9.0
 #define KEEP_RUNNING 1
+
+int noise_type;
 
 void 
 killHandler(int dummy) {
@@ -28,22 +30,14 @@ main(int argc, char const *argv[]){
 	PaStream *stream = NULL;
 	PaStreamParameters outputParameters;
 
-	struct randomValue data;
-
-	/* Generate table random values */
-	for (int i = 0; i < TABLE_SIZE; i++) {
-		data.white[i] = (randq64_double()*2.0 -1.0)/VOLUME;
-	}
-	/* Initialize user data */
-	data.next = 0;
-	init_port_audio(&outputParameters);
+	init_noise_controller(&outputParameters,BROWN_NOISE_TYPE);
 	printf("Hit ENTER to start/pause the whitenoise.\n");
 	printf("Hit ctrl+c to stop the program.\n");
 
 	while (KEEP_RUNNING)
 	{
 		getchar();
-		startAudio(&stream, &outputParameters, &data);
+		startAudio(&stream, &outputParameters);
 		/* Play white noise */
 		getchar();
 		stopAudio(&stream);
