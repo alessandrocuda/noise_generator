@@ -71,13 +71,9 @@ make
 ```
 
 ## TODO
-<<<<<<< HEAD
-- [ ] add Brown Noise
-- [ ] make a noises player
-=======
 - [x] add Brown Noise
-- [] make a noises player with parameter to select the noise
->>>>>>> brown_noise
+- [ ] add Pink Noise
+- [ ] make a noises player with parameter to select the noise
 
 
 ## Support
