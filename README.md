@@ -52,6 +52,9 @@ make
 ./white_noise_utest     #run unit test for white_noise
 ```
 
+## TODO
+- [ ] add Brown Noise
+- [ ] make a noises player
 
 
 ## Support
