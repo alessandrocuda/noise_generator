@@ -3,6 +3,7 @@
 #               				(dependencies are added to end of Makefile)
 # 'make'        				build executable file 'white_noise' and 'white_noise_utest'
 # 'make white_noise'    		build executable file 'white_noise' 
+# 'make brown_noise'    		build executable file 'brown_noise' 
 # 'make white_noise_utest'     	build executable file 'white_noise_utest'
 
 # 'make clean'  		removes all .o 
@@ -67,7 +68,8 @@ LIBS = -lpthread
 
 #COM_SOURCES := $(shell find $(SOURCEDIR) -name '*.c')
 COM_SOURCES	:= $(SOURCEDIR)/randq/randq.c 
-WNOISE_SRC	:= $(SOURCEDIR)/white_noise.c  $(SOURCEDIR)/controller.c
+WNOISE_SRC	:= $(SOURCEDIR)/white_noise.c  $(SOURCEDIR)/controller.c $(SOURCEDIR)/noise_model.c
+BNOISE_SRC	:= $(SOURCEDIR)/brown_noise.c  $(SOURCEDIR)/controller.c $(SOURCEDIR)/noise_model.c
 WNOISEUTEST_SRC	:= $(SOURCEDIR)/white_noise_utest.c
 # define the C object files 
 #
@@ -79,11 +81,13 @@ WNOISEUTEST_SRC	:= $(SOURCEDIR)/white_noise_utest.c
 #
 COM_OBJS = $(COM_SOURCES:.c=.o)
 WNOISE_OBJS = $(WNOISE_SRC:.c=.o)
+BNOISE_OBJS = $(BNOISE_SRC:.c=.o)
 WNOISEUTEST_OBJS = $(WNOISEUTEST_SRC:.c=.o)
-ALL_OBJ = $(COM_OBJS) $(WNOISE_OBJS) $(WNOISEUTEST_OBJS)
+ALL_OBJ = $(COM_OBJS) $(WNOISE_OBJS) $(BNOISE_OBJS) $(WNOISEUTEST_OBJS)
 
 # define the executable file 
 WNOISE = white_noise
+BNOISE = brown_noise
 WNOISEUTEST = white_noise_utest
 
 #
@@ -94,11 +98,13 @@ WNOISEUTEST = white_noise_utest
 
 .PHONY: depend clean clean_all
 
-all:    $(WNOISE) $(WNOISEUTEST)
-		@echo white_noise and white_noise_utest are been compiled
+all:    $(WNOISE) $(BNOISE) $(WNOISEUTEST)
+		@echo white_noise, brown_noise and white_noise_utest are been compiled
 
 $(WNOISE): $(COM_OBJS) $(WNOISE_OBJS)
 	$(CC) $(CFLAGS) $(INCLUDES) -o $(WNOISE) $(COM_OBJS) $(WNOISE_OBJS) $(OSFLAG) $(LIBS)
+$(BNOISE): $(COM_OBJS) $(BNOISE_OBJS)
+	$(CC) $(CFLAGS) $(INCLUDES) -o $(BNOISE) $(COM_OBJS) $(BNOISE_OBJS) $(OSFLAG) $(LIBS)
 $(WNOISEUTEST): $(COM_OBJS) $(WNOISEUTEST_OBJS)
 	$(CC) $(CFLAGS) $(INCLUDES) -o $(WNOISEUTEST) $(COM_OBJS) $(WNOISEUTEST_OBJS) $(LFLAGS) $(LIBS) $(LDFLAGS)
 
