@@ -121,7 +121,7 @@ clean:
 #	$(RM) -v *.o *~ $(MAIN) $(ALL_OBJ)
 	$(RM) -v $(ALL_OBJ)
 clean_all:
-	$(RM) -v $(MAIN) $(ALL_OBJ) $(WNOISE) $(WNOISEUTEST)
+	$(RM) -v $(MAIN) $(ALL_OBJ) $(WNOISE) $(BNOISE) $(WNOISEUTEST)
 
 depend: $(SRCS)
 	makedepend $(INCLUDES) $^
